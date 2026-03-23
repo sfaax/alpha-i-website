@@ -24,12 +24,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
-  const origin = req.headers['origin'];
-  if (origin && allowedOrigins.length > 0 && !allowedOrigins.includes(origin)) {
-    return res.status(403).json({ error: 'Forbidden' });
-  }
-
   const webhookUrl = process.env.WEBHOOK_CONTACT;
   if (!webhookUrl) {
     console.error('WEBHOOK_CONTACT not configured');
