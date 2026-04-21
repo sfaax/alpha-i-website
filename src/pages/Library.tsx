@@ -279,6 +279,9 @@ export default function Library() {
         <p className="text-xl text-text-muted max-w-2xl font-light leading-relaxed">
           Explorez notre catalogue d'automatisations et d'agents IA prêts à déployer. Des workflows testés en production pour transformer chaque service de votre entreprise.
         </p>
+        <p className="mt-6 font-mono text-xs uppercase tracking-widest text-accent max-w-2xl">
+          * Liste non exhaustive — de nouveaux workflows sont ajoutés régulièrement.
+        </p>
       </section>
 
       {/* Filters */}
