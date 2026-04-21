@@ -44,10 +44,10 @@ export default function Home() {
           src="/hero-bg.png"
           alt="AI Robot Background"
           referrerPolicy="no-referrer"
-          className="absolute inset-0 w-full h-full object-cover object-[70%_center] z-0 opacity-60"
+          className="absolute inset-0 w-full h-full object-cover object-[70%_center] z-0 opacity-90"
         />
         {/* Gradient Overlay for readability */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-t from-bg-base via-bg-base/70 to-bg-base/20" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-bg-base via-bg-base/40 to-bg-base/10" />
 
         <div className="relative z-10 font-mono text-accent mb-8 uppercase tracking-widest text-sm mt-32">
           [ Agence d'Intelligence Artificielle ]
@@ -90,14 +90,14 @@ export default function Home() {
       <section id="services" className="px-8 md:px-16 py-32 flex flex-col lg:flex-row gap-16 relative">
         <div className="lg:w-1/3 relative">
           {/* Background Image restricted to the left column */}
-          <div className="absolute -top-32 -bottom-32 -left-8 md:-left-16 right-0 lg:-right-8 z-0 opacity-60 pointer-events-none overflow-hidden">
-            <img 
-              src="/bluewave.png" 
-              alt="Blue Wave" 
+          <div className="absolute -top-32 -bottom-32 -left-8 md:-left-16 right-0 lg:-right-8 z-0 opacity-90 pointer-events-none overflow-hidden">
+            <img
+              src="/bluewave.png"
+              alt="Blue Wave"
               referrerPolicy="no-referrer"
-              className="w-full h-full object-cover" 
+              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-bg-base/60" />
+            <div className="absolute inset-0 bg-bg-base/30" />
             {/* Fade out on the right edge to blend with the services list */}
             <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg-base to-transparent" />
             {/* Fade out on bottom for mobile */}
@@ -197,10 +197,10 @@ export default function Home() {
           src="/impact-bg.png"
           alt="Futuristic Network Background"
           referrerPolicy="no-referrer"
-          className="absolute inset-0 w-full h-full object-cover z-0 opacity-80"
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-100"
         />
         {/* Gradient Overlay for readability */}
-        <div className="absolute inset-0 z-0 bg-bg-base/60" />
+        <div className="absolute inset-0 z-0 bg-bg-base/30" />
 
         <div className="relative z-10 mb-20 flex flex-col md:flex-row justify-between items-end gap-8">
           <h2 className="text-5xl md:text-7xl font-display font-bold uppercase tracking-tight leading-none">Impact<br/>Mesurable</h2>
@@ -249,10 +249,10 @@ export default function Home() {
           src="/womanbots.png"
           alt="Woman bots background"
           referrerPolicy="no-referrer"
-          className="absolute inset-0 w-full h-full object-cover z-0 opacity-90"
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-100"
         />
         {/* Gradient Overlay for readability */}
-        <div className="absolute inset-0 z-0 bg-bg-base/50" />
+        <div className="absolute inset-0 z-0 bg-bg-base/25" />
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
