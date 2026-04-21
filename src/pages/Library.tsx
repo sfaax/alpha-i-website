@@ -307,14 +307,7 @@ export default function Library() {
       <section>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {filtered.map((demo, idx) => (
-            <div key={`${demo.title}-${idx}`} className="group flex flex-col">
-              <div className="mb-6 overflow-hidden bg-surface aspect-video border border-border relative flex items-center justify-center">
-                <div className="absolute inset-0 bg-bg-base/50 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                <span className="font-mono text-text-muted text-xs uppercase tracking-widest z-0 opacity-50">
-                  Preview_{String(idx + 1).padStart(2, '0')}
-                </span>
-              </div>
-
+            <div key={`${demo.title}-${idx}`} className="group flex flex-col border border-border p-6 hover:border-accent transition-colors">
               <div className="flex justify-between items-start mb-4">
                 <span className="font-mono text-xs uppercase tracking-widest text-accent">
                   {demo.category}
