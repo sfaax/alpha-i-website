@@ -256,15 +256,78 @@ const workflows: Workflow[] = [
   }
 ];
 
-const categories = ["Tous", ...Array.from(new Set(workflows.map(w => w.category)))];
+const aiAgents: Workflow[] = [
+  {
+    title: "Agent Veille Concurrentielle",
+    category: "Analyse & Monitoring",
+    desc: "Multi-agents de recherche d'actualités et de concurrents avec synthèse et plan d'action stratégique.",
+    tags: ["Veille", "Multi-Agent", "Stratégie"]
+  },
+  {
+    title: "Agent Veille YouTube",
+    category: "Analyse & Monitoring",
+    desc: "Veille YouTube automatisée : retranscription vidéo, identification des sources et enrichissement de la base de connaissances.",
+    tags: ["YouTube", "Transcription", "Knowledge Base"]
+  },
+  {
+    title: "Agent Analyseur de Site Web",
+    category: "Analyse & Monitoring",
+    desc: "Analyse de sites web avec extraction d'informations, audit SEO et propositions d'améliorations design, contenu et fonctionnalités.",
+    tags: ["SEO", "Audit", "Web"]
+  },
+  {
+    title: "Agent Monitoring Chatbot",
+    category: "Support Client",
+    desc: "Analyse chaque conversation, identifie les sujets fréquents, questions et erreurs, avec synthèse quotidienne et auto-amélioration.",
+    tags: ["Chatbot", "Analytics", "Auto-Learning"]
+  },
+  {
+    title: "Générateur de Cartes Menu",
+    category: "Marketing & Contenu",
+    desc: "Génération automatique de cartes de menus pour restaurants, déclinées aux formats print et réseaux sociaux.",
+    tags: ["Restaurant", "Design", "Social"]
+  },
+  {
+    title: "Agent Assistant Personnel",
+    category: "Productivité",
+    desc: "Capture vos idées via Telegram, les stocke en base de données et propose améliorations et plan d'action réalisable.",
+    tags: ["Telegram", "Productivité", "Memory"]
+  },
+  {
+    title: "Agent Générateur d'Images & Vidéos",
+    category: "Marketing & Contenu",
+    desc: "Génère images et vidéos en automatique, stockées dans une base de données prête à alimenter vos contenus réseaux sociaux.",
+    tags: ["Image", "Vidéo", "Social"]
+  },
+  {
+    title: "Agent de Rapport d'Analyse",
+    category: "Analyse & Monitoring",
+    desc: "Génération de rapports quotidiens ou mensuels : statistiques, finances, chiffre d'affaires et indicateurs clés.",
+    tags: ["Reporting", "KPI", "Finance"]
+  }
+];
+
+type LibraryTab = "automations" | "agents";
+
+const automationCategories = ["Tous", ...Array.from(new Set(workflows.map(w => w.category)))];
+const agentCategories = ["Tous", ...Array.from(new Set(aiAgents.map(w => w.category)))];
 
 export default function Library() {
+  const [activeTab, setActiveTab] = useState<LibraryTab>("automations");
   const [activeCategory, setActiveCategory] = useState<string>("Tous");
 
+  const activeList = activeTab === "automations" ? workflows : aiAgents;
+  const categories = activeTab === "automations" ? automationCategories : agentCategories;
+
   const filtered = useMemo(
-    () => activeCategory === "Tous" ? workflows : workflows.filter(w => w.category === activeCategory),
-    [activeCategory]
+    () => activeCategory === "Tous" ? activeList : activeList.filter(w => w.category === activeCategory),
+    [activeCategory, activeList]
   );
+
+  const handleTabChange = (tab: LibraryTab) => {
+    setActiveTab(tab);
+    setActiveCategory("Tous");
+  };
 
   return (
     <div className="flex flex-col w-full min-h-screen pt-32 pb-24 px-8 md:px-16">
@@ -284,8 +347,33 @@ export default function Library() {
         </p>
       </section>
 
+      {/* Tabs */}
+      <section className="border-t border-border pt-12 mb-12">
+        <div className="font-mono text-xs uppercase tracking-widest text-text-muted mb-6">
+          Catégorie
+        </div>
+        <div className="flex flex-wrap gap-0 border border-border w-fit">
+          {([
+            { id: "automations" as LibraryTab, label: `Automatisations (${workflows.length})` },
+            { id: "agents" as LibraryTab, label: `Agents IA (${aiAgents.length})` }
+          ]).map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleTabChange(tab.id)}
+              className={`text-sm font-mono uppercase tracking-widest px-6 py-3 transition-all ${
+                activeTab === tab.id
+                  ? "bg-accent text-bg-base"
+                  : "text-text-muted hover:text-accent"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </section>
+
       {/* Filters */}
-      <section className="border-t border-border pt-12 mb-16">
+      <section className="mb-16">
         <div className="font-mono text-xs uppercase tracking-widest text-text-muted mb-6">
           Filtrer par service
         </div>
